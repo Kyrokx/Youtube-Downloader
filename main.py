@@ -3,7 +3,6 @@ import tkinter.messagebox
 from pytube import YouTube
 import os
 import sys
-import time
 import webbrowser
 
 """
