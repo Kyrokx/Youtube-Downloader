@@ -15,26 +15,27 @@ Please add star "⭐" for me 🥺
 
 
 class Main(tk.Tk):
+
     def __init__(self):
         tk.Tk.__init__(self)
+
         # Window
         self.title("Youtube Video downloader")
         self.iconbitmap("assets/youtube.ico")
         self.resizable(False, False)
         self.minsize(600, 400)
+
         # Config
         self.__MAIN_COLOR___ = "#DF0000"
         self.__INPUT_MAIN_COLOR___ = "#FF7676"
         self.config(bg=self.__MAIN_COLOR___)
-        self.YTimg = tk.PhotoImage(
-            file=r"assets\youtube.png").zoom(2).subsample(8)
+        self.YTimg = tk.PhotoImage(file=r"assets\youtube.png").zoom(2).subsample(8)
         self.PATH = r" PUT THE PATH OF DIRECTORY THAT VIDEO WILL BE REGISTERED "
 
         # Start Window
         self.components()
 
     # Open YouTube
-
     def OpenYoutube(self):
         webbrowser.open("https://www.youtube.com/")
 
@@ -67,16 +68,26 @@ class Main(tk.Tk):
 
         GITHUB : https://github.com/Kyrokx
         """)
-        self.Input = tk.Entry(self, bg=self.__INPUT_MAIN_COLOR___, font=(
-            "Helvetica", 20), fg="BLACK")
+        self.Input = tk.Entry(self, bg=self.__INPUT_MAIN_COLOR___, font=("Helvetica", 20), fg="BLACK")
         self.Input.place(x=150, y=200)
 
-        self.Button = tk.Button(self, text="Download", bg=self.__INPUT_MAIN_COLOR___, font=("Helvetica", 20),
-                                fg="BLACK", command=self.download)
+        self.Button = tk.Button(
+            self,
+            text="Download",
+            bg=self.__INPUT_MAIN_COLOR___,
+            font=("Helvetica", 20),
+            fg="BLACK",
+            command=self.download
+        )
         self.Button.place(x=220, y=250)
 
         self.Imgbutton = tk.Button(
-            self, image=self.YTimg, bg=self.__MAIN_COLOR___, bd=0, command=self.OpenYoutube)
+            self,
+            image=self.YTimg,
+            bg=self.__MAIN_COLOR___,
+            bd=0,
+            command=self.OpenYoutube
+        )
         self.Imgbutton.pack()
 
         self.mainloop()
