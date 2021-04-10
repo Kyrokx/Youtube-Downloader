@@ -88,7 +88,7 @@ class Main(tk.Tk):
         if x.startswith("https://youtu.be"):
             return x
         else:
-            return tkinter.messagebox.showwarning("Warning", "Your link must begin with 'https://youtu.be'!")
+            tkinter.messagebox.showwarning("Warning", "Your link must begin with 'https://youtu.be'!")
             sys.exit(0)
 
 
