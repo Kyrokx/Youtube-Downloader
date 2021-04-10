@@ -53,10 +53,7 @@ class Main(tk.Tk):
 
     # Launch window's components
     def components(self):
-        print("""
-
-        GITHUB : https://github.com/Kyrokx
-        """)
+        print("""\n\n GITHUB : https://github.com/Kyrokx \n\n""")
         self.Input = tk.Entry(self, bg=self.__INPUT_MAIN_COLOR___, font=("Helvetica", 20), fg="BLACK")
         self.Input.place(x=150, y=200)
 
