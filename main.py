@@ -32,6 +32,10 @@ class Main(tk.Tk):
         self.PATH = r" PUT THE PATH OF DIRECTORY THAT VIDEO WILL BE REGISTERED "
 
         # Start Window
+        self.Input = None
+        self.Button = None
+        self.Imgbutton = None
+
         self.components()
 
     # Open YouTube
