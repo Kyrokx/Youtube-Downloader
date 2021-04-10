@@ -42,25 +42,17 @@ class Main(tk.Tk):
     # Download the video
     def download(self):
         url = self.getURL()
-        if os.path.exists(self.PATH):
-            try:
-                y = YouTube(url).streams.first().download(self.PATH)
-                tkinter.messagebox.showinfo(
-                    "Success", "The video has been successfully downloaded.")
-            except EOFError:
-                tkinter.messagebox.showerror("ERROR",
-                                             "An error happened during the download of the video. Please retry...")
-                print(EOFError)
-        else:
-            os.mkdir(self.PATH)
-            try:
-                y = YouTube(url).streams.first().download(self.PATH)
-                tkinter.messagebox.showinfo(
-                    "Success", "The video has been successfully downloaded.")
-            except EOFError:
-                tkinter.messagebox.showerror("ERROR",
-                                             "An error happened during the download of the video. Please retry...")
-                print(EOFError)
+
+        try:
+            if os.path.exists(self.PATH):
+                os.mkdir(self.PATH)
+            y = YouTube(url).streams.first().download(self.PATH)
+            tkinter.messagebox.showinfo(
+                "Success", "The video has been successfully downloaded.")
+        except EOFError:
+            tkinter.messagebox.showerror("ERROR",
+                                         "An error happened during the download of the video. Please retry...")
+            print(EOFError)
 
     # Launch window's components
     def components(self):
