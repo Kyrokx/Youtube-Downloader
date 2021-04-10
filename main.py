@@ -7,15 +7,10 @@ import time
 import webbrowser
 
 """
-
 By Kyrokx - 24/03/2021
-
 Discord = Kyrokx( " ゴールド開発者 " )#7573
-
 Youtube downloader
-
 Please add star "⭐" for me 🥺
-
 """
 
 
@@ -69,7 +64,7 @@ class Main(tk.Tk):
     # Démarrer les composent de la fêntre
     def components(self):
         print("""
-        
+
         GITHUB : https://github.com/Kyrokx
         """)
         self.Input = tk.Entry(self, bg=self.__INPUT_MAIN_COLOR___, font=(
