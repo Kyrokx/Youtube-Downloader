@@ -36,15 +36,15 @@ class Main(tk.Tk):
         self.components()
 
     # Open YouTube
-    def OpenYoutube(self):
+    def openYoutube(self):
         webbrowser.open("https://www.youtube.com/")
 
     # Download the video
     def download(self):
-        URL = self.getURL()
+        url = self.getURL()
         if os.path.exists(self.PATH):
             try:
-                y = YouTube(URL).streams.first().download(self.PATH)
+                y = YouTube(url).streams.first().download(self.PATH)
                 tkinter.messagebox.showinfo(
                     "Success", "The video has been successfully downloaded.")
             except EOFError:
@@ -54,7 +54,7 @@ class Main(tk.Tk):
         else:
             os.mkdir(self.PATH)
             try:
-                y = YouTube(URL).streams.first().download(self.PATH)
+                y = YouTube(url).streams.first().download(self.PATH)
                 tkinter.messagebox.showinfo(
                     "Success", "The video has been successfully downloaded.")
             except EOFError:
@@ -86,7 +86,7 @@ class Main(tk.Tk):
             image=self.YTimg,
             bg=self.__MAIN_COLOR___,
             bd=0,
-            command=self.OpenYoutube
+            command=self.openYoutube
         )
         self.Imgbutton.pack()
 
