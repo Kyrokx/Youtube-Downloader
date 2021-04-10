@@ -33,35 +33,35 @@ class Main(tk.Tk):
         # Start Window
         self.components()
 
-    # Permet d'ouvrir youtube
+    # Open YouTube
 
     def OpenYoutube(self):
         webbrowser.open("https://www.youtube.com/")
 
-    # Télécharger le vidéo
+    # Download the video
     def download(self):
         URL = self.getURL()
         if os.path.exists(self.PATH):
             try:
                 y = YouTube(URL).streams.first().download(self.PATH)
                 tkinter.messagebox.showinfo(
-                    "Succès", "La video a bien été télécharger...")
+                    "Success", "The video has been successfully downloaded.")
             except EOFError:
-                tkinter.messagebox.showerror("ERREUR",
-                                             "Il y a eu un erreur avec le téléchargement de le vidéo. Veuillez réessayer... ")
+                tkinter.messagebox.showerror("ERROR",
+                                             "An error happened during the download of the video. Please retry...")
                 print(EOFError)
         else:
             os.mkdir(self.PATH)
             try:
                 y = YouTube(URL).streams.first().download(self.PATH)
                 tkinter.messagebox.showinfo(
-                    "Succès", "La video a bien été télécharger...")
+                    "Success", "The video has been successfully downloaded.")
             except EOFError:
-                tkinter.messagebox.showerror("ERREUR",
-                                             "Il y a eu un erreur avec le téléchargement de le vidéo. Veuillez réessayer... ")
+                tkinter.messagebox.showerror("ERROR",
+                                             "An error happened during the download of the video. Please retry...")
                 print(EOFError)
 
-    # Démarrer les composent de la fêntre
+    # Launch window's components
     def components(self):
         print("""
 
@@ -81,13 +81,13 @@ class Main(tk.Tk):
 
         self.mainloop()
 
-    # Recupére le lien
+    # Get the link
     def getURL(self):
         x = self.Input.get()
         if x.startswith("https://youtu.be"):
             return x
         else:
-            return tkinter.messagebox.showwarning("Attention", "Votre lien doit comenmcer par 'https://youtu.be' !")
+            return tkinter.messagebox.showwarning("Warning", "Your link must begin with 'https://youtu.be'!")
             sys.exit(0)
 
 
