@@ -7,7 +7,6 @@ import time
 import webbrowser
 
 """
-
 By Kyrokx - 24/03/2021
 
 Discord = Kyrokx( " ゴールド開発者 " )#7573
@@ -15,9 +14,7 @@ Discord = Kyrokx( " ゴールド開発者 " )#7573
 Youtube downloader
 
 Please add star "⭐" for me 🥺
-
 """
-
 
 class Main(tk.Tk):
     def __init__(self):
@@ -28,69 +25,59 @@ class Main(tk.Tk):
         self.resizable(False, False)
         self.minsize(600, 400)
         # Config
-        self.__MAIN_COLOR___ = "#DF0000"
-        self.__INPUT_MAIN_COLOR___ = "#FF7676"
-        self.config(bg=self.__MAIN_COLOR___)
-        self.YTimg = tk.PhotoImage(
-            file=r"assets\youtube.png").zoom(2).subsample(8)
-        self.PATH = r" PUT THE PATH OF DIRECTORY THAT VIDEO WILL BE REGISTERED "
+        self.PRIMARY_COLOR = "#DF0000"
+        self.SECOND_COLOR = "#FF7676"
+        self.config(bg=self.PRIMARY_COLOR)
+        self.YoutubeLogo = tk.PhotoImage(file=r"assets\youtube.png").zoom(2).subsample(8)
+        self.VIDEO_PATH = r"C:\Users\HP\Desktop\Projet personnel\youtube_downloader\Video"
 
         # Start Window
         self.components()
 
-    # Permet d'ouvrir youtube
-
+    # Permit to open youtube
     def OpenYoutube(self):
         webbrowser.open("https://www.youtube.com/")
 
-    # Télécharger le vidéo
+    # Download the video
     def download(self):
         URL = self.getURL()
-        if os.path.exists(self.PATH):
+        if os.path.exists(self.VIDEO_PATH):
             try:
-                y = YouTube(URL).streams.first().download(self.PATH)
-                tkinter.messagebox.showinfo(
-                    "Succès", "La video a bien été télécharger...")
+                y = YouTube(URL).streams.first().download(self.VIDEO_PATH)
+                tkinter.messagebox.showinfo("Success", "The video has been downloaded")
             except EOFError:
-                tkinter.messagebox.showerror("ERREUR",
-                                             "Il y a eu un erreur avec le téléchargement de le vidéo. Veuillez réessayer... ")
+                tkinter.messagebox.showerror("Error","There was an error downloading the video. Try Again... ")
                 print(EOFError)
         else:
-            os.mkdir(self.PATH)
+            os.mkdir(self.VIDEO_PATH)
             try:
-                y = YouTube(URL).streams.first().download(self.PATH)
+                y = YouTube(URL).streams.first().download(self.VIDEO_PATH)
                 tkinter.messagebox.showinfo(
-                    "Succès", "La video a bien été télécharger...")
+                    "Success", "The video has been downloaded")
             except EOFError:
-                tkinter.messagebox.showerror("ERREUR",
-                                             "Il y a eu un erreur avec le téléchargement de le vidéo. Veuillez réessayer... ")
+                tkinter.messagebox.showerror("Error","There was an error downloading the video. Try Again... ")
                 print(EOFError)
 
-    # Démarrer les composent de la fêntre
+    # Start all components of window
     def components(self):
-        print("""
-        
-        GITHUB : https://github.com/Kyrokx
-        """)
-        self.Input = tk.Entry(self, bg=self.__INPUT_MAIN_COLOR___, font=(
-            "Helvetica", 20), fg="BLACK")
+        print(""" GITHUB : https://github.com/Kyrokx """)
+
+        self.Input = tk.Entry(self, bg=self.SECOND_COLOR, font=("Helvetica", 20), fg="BLACK")
         self.Input.place(x=150, y=200)
 
-        self.Button = tk.Button(self, text="Download", bg=self.__INPUT_MAIN_COLOR___, font=("Helvetica", 20),
-                                fg="BLACK", command=self.download)
+        self.Button = tk.Button(self, text="Download", bg=self.SECOND_COLOR, font=("Helvetica", 20),fg="BLACK", command=self.download)
         self.Button.place(x=220, y=250)
 
-        self.Imgbutton = tk.Button(
-            self, image=self.YTimg, bg=self.__MAIN_COLOR___, bd=0, command=self.OpenYoutube)
+        self.Imgbutton = tk.Button(self, image=self.YoutubeLogo, bg=self.PRIMARY_COLOR, bd=0, command=self.OpenYoutube)
         self.Imgbutton.pack()
 
         self.mainloop()
 
-    # Recupére le lien
+    # Get the yt link
     def getURL(self):
-        x = self.Input.get()
-        if x.startswith("https://youtu.be"):
-            return x
+        link = self.Input.get()
+        if link.startswith("https://youtu.be"):
+            return link
         else:
             return tkinter.messagebox.showwarning("Attention", "Votre lien doit comenmcer par 'https://youtu.be' !")
             sys.exit(0)
